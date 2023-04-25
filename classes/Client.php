@@ -69,6 +69,7 @@ class Client
                                 $result .= $reservation->getChambre()->getHotel()." /  Chambre ".$reservation->getChambre()->getIndex()."<br>";
                             }
                     }
+                //imprime de les reservations
                 echo $result;            
             }
 
