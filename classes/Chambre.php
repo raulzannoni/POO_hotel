@@ -6,7 +6,7 @@ class Chambre
         //attributes privées de la class Hotel
         private Hotel $_hotel;
         private int $_index;  
-        private bool $_reservé;
+        private bool $_reserve;
         private Reservation $_reservation;
 
         //creation de le constructor de la chambre
@@ -15,7 +15,7 @@ class Chambre
                 $this->_hotel = $hotel;
                 $this->_hotel->addChambre($this);
                 $this->_index = $index;
-                $this->_reservé = TRUE;
+                $this->_reserve = TRUE;
 
             }
 
@@ -27,6 +27,10 @@ class Chambre
         public function setIndex(int $index)
             {
                 $this->_index = $index;
+            }
+        public function setReserve(bool $reserve)
+            {
+                $this->_reserve = $reserve;
             }
         public function setReservation(Reservation $reservation)
             {
@@ -42,10 +46,15 @@ class Chambre
             {
                 return $this->_index;
             }
+        public function getReserve()
+            {
+                return $this->_reserve;
+            }
         public function getReservation()
             {
                 return $this->_reservation;
             }
+            
         //methode pour afficher le nom de l'objet Chambre
         public function __toString()
             {
