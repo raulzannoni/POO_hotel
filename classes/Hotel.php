@@ -8,8 +8,9 @@ class Hotel
         private int $_etoiles;  
         private string $_rue;
         private int $_nombreChambre;
+        private array $_chambres;
 
-        //setter pour chaque attibutes
+        //setter pour chaque attibute
         public function setNom(string $nom)
             {
                 $this->_nom = $nom;
@@ -27,7 +28,7 @@ class Hotel
                 $this->_nombreChambre = $nombreChambre;
             }
 
-        //getter pour chaque attibutes
+        //getter pour chaque attibute
         public function getNom()
             {
                 return $this->_nom;
@@ -52,6 +53,8 @@ class Hotel
                 $this->_etoiles = $etoiles;
                 $this->_rue = $rue;
                 $this->_nombreChambre = $nombreChambre;
+                $this->_chambres = [];
+
             }
         
         //methode pour imprimer l'objet Hotel
@@ -62,9 +65,15 @@ class Hotel
                     {
                         $result .= "*"; 
                     }
-                $result .= $this->_nom;
+                $result .= " ".$this->_nom;
                 
                 return $result;
+            }
+
+        //methode pour ajouter une chambre reservé?
+        public function addChambre(Chambre $newChambre)
+            {
+                $this->_chambres[] = $newChambre;
             }
         
     }
