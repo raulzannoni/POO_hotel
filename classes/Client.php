@@ -46,7 +46,31 @@ class Client
             {
                 $this->_reservations[] = $newReservation;
             }
-
+        
+        //methode pour afficher les reservations de le client
+        public function getReservations()
+            {
+                //titre
+                $result =   "<h4>Réservation de ".$this."</h4>";
+                //controle s'il n'y a pas de reservation
+                if(count($this->_reservations) == 0)
+                    {
+                        $result .= "Aucune Reservation !";
+                    }
+                else
+                    {
+                        //singulier ou pluriel
+                        $ReservationS = (count($this->_reservations) > 1) ? "RESERVATIONS" : "RESERVATION";
+                        //nombre de les reservations
+                        $result .=  count($this->_reservations)." ".$ReservationS."<br>";
+                        //le reservations de ce client
+                        foreach($this->_reservations as $reservation)
+                            {
+                                $result .= $reservation->getChambre()->getHotel()." /  Chambre ".$reservation->getChambre()->getIndex()."<br>";
+                            }
+                    }
+                echo $result;            
+            }
 
 
     }

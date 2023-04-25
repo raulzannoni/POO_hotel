@@ -7,7 +7,6 @@ class Reservation
         private Client $_client;
         private Chambre $_chambre;
 
-
         //creation de le constructor de la class Reservation
         public function __construct(Client $client, Chambre $chambre)
             {

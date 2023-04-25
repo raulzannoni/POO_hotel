@@ -12,6 +12,7 @@ spl_autoload_register(function ($class_name)
 
 //creation de les objets Hotel
 $hotelHilton = new Hotel("Hilton", 4, "10 route de la Gare 67000 Strasbourg", 30);
+$hotelRegent = new Hotel("Regent", 4, "61 rue de Dauphine 75006 Paris", 45);
 
 //creation de les objets Chambre
 $chambre3Hilton = new Chambre($hotelHilton, 3);
@@ -22,15 +23,21 @@ $chambre17Hilton = new Chambre($hotelHilton, 17);
 $virgileGibello = new Client("virgile", "gibello");
 $mickaMurmann = new Client("micka", "murmann");
 
+//creation de les reservations (client - chambre)
 $reservation_1 = new Reservation($virgileGibello, $chambre17Hilton);
 $reservation_2 = new Reservation($mickaMurmann, $chambre3Hilton);
 $reservation_3 = new Reservation($mickaMurmann, $chambre4Hilton);
 
-echo $hotelHilton;
+//infos sur les hotels
+$hotelHilton->getInfo();
+$hotelRegent->getInfo();
 
-echo $chambre17Hilton;
+//infos sur les reservations de les hotels
+$hotelHilton->getReservations();
+$hotelRegent->getReservations();
 
-echo $virgileGibello;
-
+//infos sur les reservations de les clients
+$mickaMurmann->getReservations();
+$virgileGibello->getReservations();
 
 ?>

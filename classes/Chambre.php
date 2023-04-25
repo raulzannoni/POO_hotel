@@ -28,8 +28,12 @@ class Chambre
             {
                 $this->_index = $index;
             }
+        public function setReservation(Reservation $reservation)
+            {
+                $this->_reservation = $reservation;
+            }
         
-            //getter pour chaque attribute
+        //getter pour chaque attribute
         public function getHotel()
             {
                 return $this->_hotel;
@@ -37,6 +41,10 @@ class Chambre
         public function getIndex()
             {
                 return $this->_index;
+            }
+        public function getReservation()
+            {
+                return $this->_reservation;
             }
         //methode pour afficher le nom de l'objet Chambre
         public function __toString()
