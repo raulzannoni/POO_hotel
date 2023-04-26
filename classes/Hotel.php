@@ -119,7 +119,7 @@ class Hotel
                 <?php      
             }
 
-        //methode pour associer le chambre (dispo - reservé)
+        //methode pour associer le chambre (dispo - reservé) et ajouter le prix par jour
         public function listChambres()
             {
                 //boucle pour toutes les chambres
@@ -136,7 +136,28 @@ class Hotel
                                     }
                             }   
                     }
+                //definition de 3 differents gamme de prix par jour (120, 200, 300)   
+                $gammePetitBudget = intdiv($this->_nombreChambres, 3); //ex: 30 total -> moins cher 1 - 10
+                $gammeMoyenBudget = intdiv($this->_nombreChambres - $gammePetitBudget, 2) + $gammePetitBudget; //ex: 30 total -> moyen 11 - 20
+                $gammeHautBudget = $this->_nombreChambres; //ex: 30 total -> plus cher 21 - 30
                 
+                //attribution de prix
+                foreach($this->_chambres as $key => $chambre)
+                    {
+                        if($key <= $gammePetitBudget)
+                            {
+                                $chambre->setPrix(120);
+                            }
+                        if($key > $gammePetitBudget and $key <= $gammeMoyenBudget)
+                            {
+                                $chambre->setPrix(200);
+                            }
+                        else
+                            {
+                                $chambre->setPrix(300);
+                            }
+                    }
+
                 return $this->_chambres;
             }
 
