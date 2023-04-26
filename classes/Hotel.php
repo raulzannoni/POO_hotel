@@ -7,7 +7,7 @@ class Hotel
         private string $_nom;
         private int $_etoiles;  
         private string $_rue;
-        private int $_nombreChambres;
+        private int $_nombreChambres; 
         private array $_chambres;
         private array $_chambresReserve;
         private array $_chambresDispo;
@@ -62,6 +62,7 @@ class Hotel
             {
                 return $this->_chambres;
             }
+           
         public function getChambresDispo()
             {
                 return $this->_chambresDispo;

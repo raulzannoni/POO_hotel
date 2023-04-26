@@ -70,19 +70,28 @@ class Client
                         ?>
                             <p><?=count($this->_reservations)." ".$ReservationS?><br></p>
                         <?php
-
+                        $prixTotal = 0;
                         //le reservations de ce client
                         foreach($this->_reservations as $reservation)
                             {
                                 //index de la chambre
                                 $index = $reservation->getChambre()->getIndex();
 
-                                
                                 //controle de le wifi de la chambre
-                                $wifi = ($reservation->getChambre()->getHotel()->listChambres()[$index]->getWifi()) ? "oui" : "non";
+                                $wifi = ($reservation->getChambre()->getWifi()) ? "oui" : "non";
 
                                 //prix par jour de la chambre
                                 $prixJour = $reservation->getChambre()->getHotel()->listChambres()[$index]->getPrixJour();
+
+                                //calcul de la permanence en jours pour cette reservation
+                                $diff = $reservation->getDateSortie()->diff($reservation->getDateDebut());
+
+                                //casting en entiere
+                                $diff = (int) $diff->d;
+
+                                //calcul de le prix total pour cette reservation
+                                $prixTotal += $diff*$prixJour;
+
                                 ?>
                                 <b><?= $reservation->getChambre()->getHotel()?></b> / <?=$reservation->getChambre()?>
                                 <?="(". $prixJour." € - Wifi :  ".$wifi.
@@ -90,6 +99,7 @@ class Client
                                 " au ".$reservation->getDateSortie()->format('d-m-Y') ?><br>
                                 <?php
                             }
+                        ?>Total : <?= $prixTotal ?>€<br><?php
                     }      
             }
     }
