@@ -110,13 +110,13 @@ class Hotel
         //methode pour afficher les infos de l'hotel
         public function getInfo()
             {
-                $result =   "<h3>".$this."</h3>".
-                            $this->_rue."<br>".
-                            "Nombre de chambres: ".$this->_nombreChambres."<br>".
-                            "Nombre de chambres réservées: ".count($this->_chambresReserve)."<br>".
-                            "Nombre de chambres dispo: ".$this->_nombreChambres - count($this->_chambresReserve)."<br>";
-
-                echo $result;            
+                ?>
+                <h3> <?= $this ?> </h3>
+                <?= $this->_rue ?><br>
+                            Nombre de chambres: <?=$this->_nombreChambres ?><br>
+                            Nombre de chambres réservées: <?=count($this->_chambresReserve) ?><br>
+                            Nombre de chambres dispo: <?= $this->_nombreChambres - count($this->_chambresReserve) ?> <br>    
+                <?php      
             }
 
         //methode pour associer le chambre (dispo - reservé)
@@ -168,14 +168,37 @@ class Hotel
         //methode pour afficher la list de les chambres de l'hotel
         public function getStatut()
             {
-                $result =   "<h4>Statuts des chambres de ".$this."</h4>";
+                ?>
+                    <table border=1>
+                        <thead >
+                            <caption>Statuts des chambres de <?= $this ?></caption>
+                                <tr>
+                                    <th>CHAMBRE</th>
+                                    <th>PRIX</th>
+                                    <th>WI-FI</th>
+                                    <th>ETAT</th>
+                                </tr>
+                        </thead>
+                        <tbody>
+                    <?php
                 foreach($this->listChambres() as $key => $chambre)
                     {
                         $etat =  ($chambre->getReserve()) ? "RESERVE" : "DISPONIBLE";
-                        $result .= $chambre." ".$etat."<br>";
+                        $wifi =  ($chambre->getWifi()) ? "📶" : "";
+                        ?> 
+                            <tr>
+                        
+                                    <th><?= $chambre ?></th>
+                                    <th>100€</th>
+                                    <th><?= $wifi ?></th>
+                                    <th><?= $etat ?></th>
+                            </tr>
+                        <?php
                     }
-                
-                echo $result;
+                ?>
+                        </tbody>
+                    </table>
+                <?php
             }
         
     }
