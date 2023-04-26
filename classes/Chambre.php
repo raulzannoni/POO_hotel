@@ -8,6 +8,7 @@ class Chambre
         private int $_index;  
         private bool $_reserve;
         private bool $_wifi;
+        private float $_prixJour;
         private Reservation $_reservation;
 
         //creation de le constructor de la chambre
@@ -33,13 +34,17 @@ class Chambre
             {
                 $this->_reserve = $reserve;
             }
-        public function setReservation(Reservation $reservation)
-            {
-                $this->_reservation = $reservation;
-            }
         public function setWifi(bool $wifi)
             {
                 $this->_wifi = $wifi;
+            }
+        public function setPrixJour(float $prixJour)
+            {
+                $this->_prixJour = $prixJour;
+            }
+        public function setReservation(Reservation $reservation)
+            {
+                $this->_reservation = $reservation;
             }
         
         //getter pour chaque attribute
@@ -55,14 +60,19 @@ class Chambre
             {
                 return $this->_reserve;
             }
+        public function getWifi()
+            {
+                return $this->_wifi;
+            }
+        public function getPrixJour()
+            {
+                return $this->_prixJour;
+            }     
         public function getReservation()
             {
                 return $this->_reservation;
             }
-        public function getWifi()
-            {
-                return $this->_wifi;
-            }    
+           
         //methode pour afficher le nom de l'objet Chambre
         public function __toString()
             {
