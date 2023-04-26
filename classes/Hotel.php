@@ -188,7 +188,9 @@ class Hotel
                         foreach($this->_chambresReserve as $chambre)
                             {
                                 ?>
-                                <p><?= $chambre->getReservation()->getClient()." - ".$chambre ?><br></p>
+                                <?= $chambre->getReservation()->getClient()." - ".$chambre." - ".
+                                " du ".$chambre->getReservation()->getDateDebut()->format('d-m-Y').
+                                " au ".$chambre->getReservation()->getDateSortie()->format('d-m-Y') ?><br>
                                 <?php
                             }
                     }             

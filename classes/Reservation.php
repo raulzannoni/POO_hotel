@@ -29,6 +29,14 @@ class Reservation
             {
                 $this->_chambre = $chambre;
             }
+        public function setDateDebut(string $dateDebut)
+            {
+                $this->_dateDebut = new DateTime($dateDebut);
+            }
+        public function setDateSortie(string $dateSortie)
+            {
+                $this->_dateSortie = new DateTime($dateSortie);
+            }
         
         //getter pour chaque attribute
         public function getClient()
@@ -39,5 +47,12 @@ class Reservation
             {
                 return $this->_chambre;
             }
-
+        public function getDateDebut()
+            {
+                return $this->_dateDebut;
+            }
+        public function getDateSortie()
+            {
+                return $this->_dateSortie;
+            }
     }
