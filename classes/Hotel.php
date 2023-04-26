@@ -141,20 +141,21 @@ class Hotel
                 $gammeMoyenBudget = intdiv($this->_nombreChambres - $gammePetitBudget, 2) + $gammePetitBudget; //ex: 30 total -> moyen 11 - 20
                 $gammeHautBudget = $this->_nombreChambres; //ex: 30 total -> plus cher 21 - 30
                 
-                //attribution de prix
+                //attribution de prix et de wifi
                 foreach($this->_chambres as $key => $chambre)
                     {
                         if($key <= $gammePetitBudget)
                             {
-                                $chambre->setPrix(120);
+                                $chambre->setPrixJour(120);
+                                $chambre->setWifi(FALSE);
                             }
-                        if($key > $gammePetitBudget and $key <= $gammeMoyenBudget)
+                        elseif($key > $gammePetitBudget and $key <= $gammeMoyenBudget)
                             {
-                                $chambre->setPrix(200);
+                                $chambre->setPrixJour(200);
                             }
                         else
                             {
-                                $chambre->setPrix(300);
+                                $chambre->setPrixJour(300);
                             }
                     }
 
@@ -199,7 +200,7 @@ class Hotel
                 ?>
                     <table border=1>
                         <thead >
-                            <caption>Statuts des chambres de <?= $this ?></caption>
+                            <caption><h4>Statuts des chambres de <?= $this ?></h4></h4></caption>
                                 <tr>
                                     <th>CHAMBRE</th>
                                     <th>PRIX</th>
@@ -217,7 +218,7 @@ class Hotel
                             <tr>
                         
                                     <th><?= $chambre ?></th>
-                                    <th>100€</th>
+                                    <th><?= $chambre->getPrixJour()." €" ?></th>
                                     <th><?= $wifi ?></th>
                                     <th><?= $etat ?></th>
                             </tr>
