@@ -25,8 +25,8 @@ $mickaMurmann = new Client("micka", "murmann");
 
 //creation de les reservations (client - chambre)
 $reservation_1 = new Reservation($virgileGibello, $chambre17Hilton, "01-01-2021", "01-01-2021");
-$reservation_2 = new Reservation($mickaMurmann, $chambre3Hilton, "11-03-2021", "11-03-2021");
-$reservation_3 = new Reservation($mickaMurmann, $chambre4Hilton, "01-04-2021", "01-04-2021");
+$reservation_2 = new Reservation($mickaMurmann, $chambre3Hilton, "11-03-2021", "15-03-2021");
+$reservation_3 = new Reservation($mickaMurmann, $chambre4Hilton, "01-04-2021", "17-04-2021");
 
 //infos sur les hotels
 $hotelHilton->getInfo();
