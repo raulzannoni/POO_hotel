@@ -70,6 +70,8 @@ class Client
                         ?>
                             <p><?=count($this->_reservations)." ".$ReservationS?><br></p>
                         <?php
+
+                        //priox à payer au debut
                         $prixTotal = 0;
                         //le reservations de ce client
                         foreach($this->_reservations as $reservation)
@@ -99,6 +101,7 @@ class Client
                                 " au ".$reservation->getDateSortie()->format('d-m-Y') ?><br>
                                 <?php
                             }
+                        //affiche de le prix    
                         ?>Total : <?= $prixTotal ?>€<br><?php
                     }      
             }
