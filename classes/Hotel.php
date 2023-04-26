@@ -143,26 +143,33 @@ class Hotel
         //methode pour afficher les reservations de l'hotel
         public function getReservations()
             {
-                //titre   
-                $result =   "<h4>Réservation de ".$this."</h4>";
+                 //titre   
+                ?>
+                    <h4>Réservation de <?=$this ?></h4>
+                <?php
                 //controle s'il n'y a pas de reservation
                 if(count($this->_chambresReserve) == 0)
                     {
-                        $result .= "Aucune Reservation !";
+                        ?>
+                            Aucune Reservation !
+                        <?php
                     }
                 else
                     {
                         //singulier ou pluriel
                         $ReservationS = (count($this->_chambresReserve) > 1) ? "RESERVATIONS" : "RESERVATION";
-                        //nombre de les reservations
-                        $result .=  count($this->_chambresReserve)." ".$ReservationS."<br>";
+                        //nombre de les reservation
+                        ?>
+                            <p><?=count($this->_chambresReserve)." ".$ReservationS?><br></p>
+                        <?php
                         //le reservations de cet hotel
                         foreach($this->_chambresReserve as $chambre)
                             {
-                                $result .= $chambre->getReservation()->getClient()." -  Chambre ".$chambre->getIndex()."<br>";
+                                ?>
+                                <p><?= $chambre->getReservation()->getClient()." - ".$chambre ?><br></p>
+                                <?php
                             }
-                    }
-                echo $result;            
+                    }             
             }
         
         //methode pour afficher la list de les chambres de l'hotel
