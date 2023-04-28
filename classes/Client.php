@@ -80,7 +80,7 @@ class Client
                                 $index = $reservation->getChambre()->getIndex();
 
                                 //controle de le wifi de la chambre
-                                $wifi = ($reservation->getChambre()->getWifi()) ? "oui" : "non";
+                                $wifi = ($reservation->getChambre()->getHotel()->listChambres()[$index]->getWifi()) ? "oui" : "non";
 
                                 //prix par jour de la chambre
                                 $prixJour = $reservation->getChambre()->getHotel()->listChambres()[$index]->getPrixJour();
@@ -97,7 +97,7 @@ class Client
                                 ?>
                                 <b><?= $reservation->getChambre()->getHotel()?></b> / <?=$reservation->getChambre()?>
                                 <?="(". $prixJour." € - Wifi :  ".$wifi.
-                                " du ".$reservation->getDateDebut()->format('d-m-Y').
+                                ") du ".$reservation->getDateDebut()->format('d-m-Y').
                                 " au ".$reservation->getDateSortie()->format('d-m-Y') ?><br>
                                 <?php
                             }
